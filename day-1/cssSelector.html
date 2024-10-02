@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selector Practice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+     <header class="header">
+        <div class="header-div">
+        <span class="header__title">Contact Form Exercise</span></div>
+        <nav class="header__nav">
+            <a href="index.html">Home</a>
+            <a href="cssBasic.html">About</a>
+            <a href="forms.html">Contact</a>
+            <a href="cssSelector.html">CSS Selectors</a>
+        </nav>
+</header>
+       <main class="main-selector">
+    <section class="selector-sec">
+        <!-- Universal Selector Example -->
+        <div class="selection-items">
+            <h2>Universal Selector Example</h2>
+            <p>This paragraph is styled using the universal selector (*) which applies to all elements.</p>
+        </div>
+
+        <!-- Type Selector Example -->
+        <div>
+            <h2>Type Selector Example</h2>
+            <h4>Headings and Paragraphs</h4>
+            <p>This is an example of a paragraph styled by the type selector.</p>
+        </div>
+
+        <!-- Class Selector Example -->
+        <div class="highlight">
+            <h2>Class Selector Example</h2>
+            <p>This section is styled using a class selector named "highlight".</p>
+        </div>
+
+        <!-- ID Selector Example -->
+        <div id="unique">
+            <h1>Id Selector Example</h1>
+            <p>This section is styled using an id selector named "#unique".</p>
+        </div>
+
+        <!-- Attribute Selector Example -->
+        <div>
+            <h2>Attribute Selector Example</h2>
+            <span>Type your name:</span><br>
+            <input type="text" placeholder="Enter something...">
+        </div>
+
+        <!-- Descendant Selector Example -->
+        <div>
+            <h2>Descendant Selector Example</h2>
+            <p>This section contains a div and is styled by a descendant selector (div p).</p>
+        </div>
+
+        <!-- Child Selector Example -->
+        <div>
+            <h2>Child Selector Example</h2>
+            <ul>
+                <li>First child item styled using child selector (ul > li)</li>
+                <li>Another child item in the list.</li>
+            </ul>
+        </div>
+
+        <!-- Adjacent Sibling Selector Example -->
+        <div>
+            <h3>Adjacent Sibling Selector Example</h3>
+            <h2>This is a Heading</h2>
+            <p>This paragraph is styled as an adjacent sibling to the heading (h2 + p).</p>
+        </div>
+
+        <!-- General Sibling Selector Example -->
+        <div>
+            <h4>General Sibling Selector Example</h4>
+            <h2>This is a Heading</h2>
+            <p>This paragraph is styled as a general sibling to the heading (h2 ~ p).</p>
+            <p>Another sibling paragraph styled the same way.</p>
+        </div>
+    </section>
+</main>
+
+        <footer class="footer">
+        <span>&copy; 2024 CSS Basic Review</span></footer>
+
+    </header>
+</body>
+</html>

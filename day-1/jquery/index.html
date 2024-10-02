@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.js"></script>
+    <style>
+        .container{
+            width: 100%;
+            height: 200px;
+            border: 1px black solid;
+            text-align: center;
+
+        }
+        .highligh{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>hello</h1>
+    <div id="unipueId">byeee</div>
+    <div class="classItem">kafka</div>
+    <input type="text" placeholder="hc">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae incidunt, distinctio saepe blanditiis fugiat ducimus, molestias quis ea totam rerum voluptates at vero reiciendis quidem inventore veritatis illum non impedit.</p>
+   <div id="content">hi welcome to jquery</div>
+   <div class="container">
+    <button id="btn">Click Me</button>
+   </div>
+   <img src="logo.jpg" id="logo" alt="logo">
+   <div class="container">
+       <div class="item">item 1</div>
+       <div class="item">item 2</div>
+    <div class="item">item 3</div>
+    <div class="item sp">item 4</div>
+   </div>
+   <div class=""><button id="mybtn">click me</button>
+<div class="hoverevent" style="width: 100px; height:100px; background-color:purple"></div>
+</div>
+<div class="age"></div>
+    <script>
+        $(document).ready(function(){
+        $('h1').text('hello kf jquery');
+
+        $('#unipueId').text('helllooooo');
+        $('.classItem').css('color','red');
+        $('[placeholder]').val('hello');
+        // dom-main
+        $('#content').html('<p>bye to jquery</p>')
+        //attr()
+        $('#logo').attr('src','logo.png');
+        //remove()
+        $('#unipueId').remove();
+        //append()
+        $('#content').append('<p>append to jquery</p>');
+        //prepend
+        $('#content').prepend('<p>prepend to jquery</p>');
+        //parent 
+        $('#btn').click(function(){
+            var parentEl=$(this).parent();
+            parentEl.toggleClass('highligh')
+        })
+
+    })
+    $('.item').click(function(){
+        var sib=$(this).siblings();
+        sib.toggleClass('highligh')
+        var special=$(this).siblings('.sp')
+        special.css('background-color','red')
+    })
+ $('#mybtn').click(function() {
+    var age = prompt('Enter your age');
+
+    // Check if the input is a valid number
+    if (isNaN(age) || age === null || age.trim() === '') {
+        alert('Please enter a valid number for age.');
+    } else {
+        // If valid, display the age
+        $('.age').html('<p>Your age is: ' + age + '</p>');
+    }
+});
+
+    </script>
+</body>
+</html>

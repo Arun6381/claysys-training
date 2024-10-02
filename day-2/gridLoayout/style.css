@@ -1,0 +1,34 @@
+.header {
+    background-color: green;
+}
+
+.side-bar {
+    height: 85vh; /* Remove fixed height for responsiveness */
+}
+
+.main-content {
+    height: 85vh;
+    background-color: #f1f1f1;
+}
+
+.footer {
+    position: relative; /* Changed from fixed to relative for better responsiveness */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(209, 205, 205);
+    color: rgb(20, 20, 20);
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Media queries for small devices */
+@media (max-width: 768px) {
+    .side-bar {
+        height: 20vh; /* Sidebar height will adjust based on content */
+    }
+    
+    .footer {
+        position: relative; /* Keep footer above content */
+    }
+}
