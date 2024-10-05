@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="main-class">
+        <section class="side-bar">
+            <span><img src="./assets/central-pharma-transformed (1).webp" alt="logo">Investo</span>
+            <nav class="side-nav">
+                <ul>
+                    <li class="side-li"><img src="./assets/dashboard.png" alt="dashboard" /><span>Dashboard</span></li>
+                    <li><img src="./assets/folder.svg" alt="inventory" /><span>Inventory</span></li>
+                    <li><img src="./assets/performance.png" alt="tracking" /><span>Tracking</span></li>
+                    <li><img src="./assets/shopping-bag.png" alt="order" /><span>Ordering</span></li>
+                    <li><img src="./assets/data.png" alt="analytics" /><span>Report Analytics</span></li>
+                    <li><img src="./assets/people.png" alt="auth" /><span>User Authentication</span></li>
+                    <li><img src="./assets/setting.png" alt="settings" /><span>Settings</span></li>
+                </ul>
+            </nav>
+        </section>
+
+        <section class="main-bar">
+            <div class="main-bar-1">
+
+                <div class="main-1-1">Order</div>
+                <div class="main-1-2">
+                    <div class="drop-down">
+                        <select id="drop-down-box">
+                            <option value="">Bravaa shop</option>
+                            <option value="">Fizzy shop</option>
+                            <option value="">Vizzy shop</option>
+                        </select>
+                    </div>
+                    <div class="img-bell"><img src="./assets/Bell.png" alt="notifications"></div>
+                    <div class="profile-img"><img src="./assets/profile.png" alt="profile"></div>
+                </div>
+            </div>
+            <hr>
+            <div class="main-bar-2">
+                <span>Home</span>&nbsp;<strong>/</strong>&nbsp;<span>Order</span>
+            </div>
+
+            <div class="section-2">
+                <div class="section-2-1">
+                    <span>Order Summary</span>
+                    <button><span>+</span> Add Product</button>
+                </div>
+                <div class="grid-layout">
+                    <div>
+                        <h1 class="grid-items-1" style="color: blue;">Total Order</h1>
+                        <p class="grid-items-1-1"> <span style="font-size:1.2rem;">Total 560</span> <span
+                                style="font-size: .8rem; color:gray">Last week</span></p>
+                    </div>
+                    <div>
+                        <h1 class="grid-items-1" style="color:rgb(206, 155, 16);">Total Order</h1>
+                        <p class="grid-items-1-1"> <span style="font-size:1.2rem;">Total 430</span> <span
+                                style="font-size: .8rem; color:gray">Last week</span></p>
+                    </div>
+                    <div>
+                        <h1 class="grid-items-1" style="color: red;">Total Order</h1>
+                        <p class="grid-items-1-1"> <span style="font-size:1.2rem;">Total 160</span> <span
+                                style="font-size: .8rem; color:gray">Last week</span></p>
+                    </div>
+                </div>
+                <div class="order-items">
+                    <div style="font-size: 1.5rem; font-weight:bold"> Order Items</div>
+                    <div class="order-items-1">
+                        <div class="order-search">
+                            <img class="image-resize" src="./assets/search-interface-symbol.png" alt="">
+                            <input style="height:20px; border:none;" type="search" placeholder="Search">
+                        </div>
+                        <div class="filter-items">
+                            <button><img class="image-resize" src="./assets/filter.png" alt="">
+                                <span>Filter</span></button>
+                            <button><img class="image-resize" src="./assets//calendar.png" alt="">
+                                <span>Date</span></button>
+                            <button><img class="image-resize" src="./assets/export.png" alt="">
+                                <span>Export</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-content">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>Order</th>
+                                <th>Customers</th>
+                                <th>Tracking</th>
+                                <th>Order Date</th>
+                                <th>Quantity</th>
+                                <th>Location</th>
+                                <th>Rate</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <tr>
+                                <td><input type="checkbox"></td>
+                                <td>#1002</td>
+                                <td>Pardeesh</td>
+                                <td>#12345678</td>
+                                <td>Today-4.20 pm</td>
+                                <td>20</td>
+                                <td>Tamil Nadu</td>
+                                <td>$500.00</td>
+                                <td class="status completed">
+                                    <div></div>Completed
+                                </td>
+                                <td><img src="./assets/more.png" alt="more" class="action-icon"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>#1002</td>
+                                <td>Pardeesh</td>
+                                <td>#12345678</td>
+                                <td>Today-4.20 pm</td>
+                                <td>20</td>
+                                <td>Tamil Nadu</td>
+                                <td>$500.00</td>
+                                <td class="status in-process">
+                                    <div></div>In Process
+                                </td>
+                                <td><img src="./assets/more.png" alt="more" class="action-icon"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>#1002</td>
+                                <td>Pardeesh</td>
+                                <td>#12345678</td>
+                                <td>Today-4.20 pm</td>
+                                <td>20</td>
+                                <td>Tamil Nadu</td>
+                                <td>$500.00</td>
+                                <td class="status pending">
+                                    <div></div>Pending
+                                </td>
+                                <td><img src="./assets/more.png" alt="more" class="action-icon"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>#1002</td>
+                                <td>Pardeesh</td>
+                                <td>#12345678</td>
+                                <td>Today-4.20 pm</td>
+                                <td>20</td>
+                                <td>Tamil Nadu</td>
+                                <td>$500.00</td>
+                                <td class="status completed">
+                                    <div></div>Completed
+                                </td>
+                                <td><img src="./assets/more.png" alt="more" class="action-icon"></td>
+                            </tr>
+                             <tr>
+                                <td><input type="checkbox"></td>
+                                <td>#1002</td>
+                                <td>Pardeesh</td>
+                                <td>#12345678</td>
+                                <td>Today-4.20 pm</td>
+                                <td>20</td>
+                                <td>Tamil Nadu</td>
+                                <td>$500.00</td>
+                                <td class="status completed">
+                                    <div></div>Completed
+                                </td>
+                                <td><img src="./assets/more.png" alt="more" class="action-icon"></td>
+                            </tr> <tr>
+                                <td><input type="checkbox"></td>
+                                <td>#1002</td>
+                                <td>Pardeesh</td>
+                                <td>#12345678</td>
+                                <td>Today-4.20 pm</td>
+                                <td>20</td>
+                                <td>Tamil Nadu</td>
+                                <td>$500.00</td>
+                                <td class="status completed">
+                                    <div></div>Completed
+                                </td>
+                                <td><img src="./assets/more.png" alt="more" class="action-icon"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>#1002</td>
+                                <td>Pardeesh</td>
+                                <td>#12345678</td>
+                                <td>Today-4.20 pm</td>
+                                <td>20</td>
+                                <td>Tamil Nadu</td>
+                                <td>$500.00</td>
+                                <td class="status in-process">
+                                    <div></div>In Process
+                                </td>
+                                <td><img src="./assets/more.png" alt="more" class="action-icon"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>#1002</td>
+                                <td>Pardeesh</td>
+                                <td>#12345678</td>
+                                <td>Today-4.20 pm</td>
+                                <td>20</td>
+                                <td>Tamil Nadu</td>
+                                <td>$500.00</td>
+                                <td class="status pending">
+                                    <div></div>Pending
+                                </td>
+                                <td><img src="./assets/more.png" alt="more" class="action-icon"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
