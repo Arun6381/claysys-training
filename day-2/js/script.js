@@ -22,7 +22,7 @@ $(document).ready(function() {
   $("#taskList").on("click", ".taskText", function() {
     $(this)
       .siblings(".taskItem")
-      .toggleClass("complete"); // Toggle complete class on taskItem
+      .toggleClass("complete"); 
     if ($(this).text() === "completed") {
       $(this).text("not completed");
     } else {

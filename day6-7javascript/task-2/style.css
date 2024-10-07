@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 400px;
+    height: auto;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+ .complete {
+            text-decoration: line-through;
+            color: gray;
+        }
+        
+  .delete-btn{
+    padding: 5px;
+    margin-left: 10px;
+    background-color: red;
+    color: #fff;
+    border-radius: 10px;
+  }      
+.inp-container{
+    display: flex;
+    gap:20px;
+}
+.taskList{
+    list-style: none;
+    margin: 10px;
+}
+.taskList li input{
+   margin-right: 10px;
+    flex-direction: column;
+}
+.error {
+    color: red;
+}

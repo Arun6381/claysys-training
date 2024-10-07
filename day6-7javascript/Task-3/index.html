@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grades Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Grades Manager</h1>
+        <div class="form-container">
+            <label>Student Name:</label>
+            <input type="text" id="student-name" style="width: 300px; height:30px;">
+            <label>Grade:</label>
+            <input type="text" id="student-grade" style="width: 300px; height:30px;">
+       <button id="add-student" class="btn">Add Student</button>
+       <button id="display-grade"  class="btn">Display Grade</button>
+        </div>
+        <div class="grade-list"> Grade List </div>
+            <ol id="student-list"></ol>
+
+       
+        <div class="average-grade">
+            <button id="avd-btn"  class="btn">Calculate Average Grade</button>
+     <div class="display-grade-avg">Average Grade :<span></span></div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

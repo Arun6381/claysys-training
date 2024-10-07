@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <div class="inp-container">
+        <input type="text" placeholder="Enter new Task" id="task">
+        <button id="add-tasks" style="background-color: rgb(48, 76, 233); color:#fff; padding:10px; border-radius:10px;" >Add Task</button>
+        </div>
+       <div class="error" id="error" style="display: none;"></div>
+      <ul id="taskList"></ul>
+    </div>
+    <script src="./script.js" defer></script>
+</body>
+</html>
