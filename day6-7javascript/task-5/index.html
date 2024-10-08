@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Wether Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+   <div class="container">
+    <h1>Wether Dashboard</h1>
+    <div ><input type="text" id="input-field"> <button id="search">Search</button></div>
+  
+   <div class="display-wether">
+    <div class="citys"><span>City Name: </span><span id="city-name"></span></div>
+    <div class="temperature"><span>Temperature: </span><span id="temperature"></span></div>
+    <div class="humidity"><span>Humidity: </span><span id="humidity"></span></div>
+   </div>
+  <div class="wether-icon"><span>Weather Icon:</span><span id="weather-icon"></span></div>
+
+ </div>
     <script src="./script.js"></script>
 </body>
 </html>

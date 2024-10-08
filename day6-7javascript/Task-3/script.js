@@ -6,10 +6,13 @@ document.getElementById("add-student").addEventListener("click", function() {
     alert("Please enter a valid student name and grade.");
     return;
   }
+  if (studentGrade < 0 || studentGrade >= 100) {
+    alert("Please Enter the valid input between 1 to 100");
+    return;
+  }
   students.push({ name: studentName, grade: studentGrade });
   document.getElementById("student-name").value = "";
   document.getElementById("student-grade").value = "";
-  renderStudentList();
 });
 document.getElementById("avd-btn").addEventListener("click", function() {
   if (students.length === 0) {
@@ -25,11 +28,11 @@ document.getElementById("avd-btn").addEventListener("click", function() {
     ".display-grade-avg span"
   ).textContent = average.toFixed(2);
 });
-function renderStudentList() {
+document.getElementById("display-grade").addEventListener("click", function() {
   let studentList = document.getElementById("student-list");
   studentList.innerHTML = "";
 
   students.forEach(function(student) {
     studentList.innerHTML += `<li>${student.name} - ${student.grade}</li>`;
   });
-}
+});
