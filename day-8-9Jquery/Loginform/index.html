@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="style.css"> 
+    <script src="./js/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <div class="container">
+          <span id="success" style="color: rgb(38, 214, 53); display:none; font-size:xx-large;  font-weight:bolder;">Login Successfully completed</span>
+        <div class="heading">
+            <h1>Welcome Back!</h1>
+            <p>Login to your account</p>
+        </div>
+        <div class="form-container">
+            <form id="login-form"> 
+              
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" >
+                <span id="email-err"  style="color: red; display:none;"></span>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" min="8" max="16" >
+                <span id="password-err" style="color: red; display:none;"></span>
+                
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember Me</label>
+                </div>
+
+                <span href="#" style="color: blue;">Forgot Password?</span>
+                <button type="submit" id="login-btn">Login</button>
+                <span id="total-err" style="color: red; display:none;"></span>
+            </form>
+        </div>
+        <div class="footer">
+            Don't have an account? <a href="../Registerform/index.html">Sign Up</a>
+        </div>
+    </div>
+    <!-- <script src="./normaljs.js"></script> -->
+    <script src="./script.js"></script>
+</body>
+</html>

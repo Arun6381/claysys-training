@@ -13,6 +13,9 @@ document.getElementById("add-student").addEventListener("click", function() {
   students.push({ name: studentName, grade: studentGrade });
   document.getElementById("student-name").value = "";
   document.getElementById("student-grade").value = "";
+  console.log("====================================");
+  console.log(students);
+  console.log("====================================");
 });
 document.getElementById("avd-btn").addEventListener("click", function() {
   if (students.length === 0) {
