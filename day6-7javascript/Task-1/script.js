@@ -1,4 +1,5 @@
 document.getElementById("calculate").addEventListener("click", function() {
+  //get value from input field
   let principal = parseFloat(document.getElementById("principal").value);
   let time = parseFloat(document.getElementById("time").value);
   let rates = parseFloat(document.getElementById("rate").value);
