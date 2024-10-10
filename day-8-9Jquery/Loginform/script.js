@@ -8,14 +8,22 @@ $(document).ready(function() {
     const isValid =
       email && /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 
-    // Toggle CSS classes based on validity
-    $("#email")
-      .toggleClass("invalid", !isValid)
-      .toggleClass("valid", isValid);
-    // Show or hide the error message
-    $("#email-err")
-      .text(isValid ? "" : "Invalid email format.")
-      .toggle(!isValid);
+    // Add or remove 'invalid' and 'valid' classes based on validity
+    if (isValid) {
+      $("#email").removeClass("invalid");
+      $("#email").addClass("valid");
+    } else {
+      $("#email").removeClass("valid");
+      $("#email").addClass("invalid");
+    }
+
+    // Show or hide the error message based on validity
+    if (!isValid) {
+      $("#email-err").text("Invalid email format.");
+      $("#email-err")[0].style.display = "block";
+    } else {
+      $("#email-err")[0].style.display = "none";
+    }
 
     return isValid; // Return the validation result
   }
@@ -26,18 +34,24 @@ $(document).ready(function() {
     const isValid =
       password && /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password);
 
-    // Toggle CSS classes based on validity
-    $("#password")
-      .toggleClass("invalid", !isValid)
-      .toggleClass("valid", isValid);
-    // Show or hide the error message
-    $("#password-err")
-      .text(
-        isValid
-          ? ""
-          : "Password must be at least 8 characters long and contain letters and numbers."
-      )
-      .toggle(!isValid);
+    // Add or remove 'invalid' and 'valid' classes based on validity
+    if (isValid) {
+      $("#password").removeClass("invalid");
+      $("#password").addClass("valid");
+    } else {
+      $("#password").removeClass("valid");
+      $("#password").addClass("invalid");
+    }
+
+    // Show or hide the error message based on validity
+    if (!isValid) {
+      $("#password-err").text(
+        "Password must be at least 8 characters long and contain letters and numbers."
+      );
+      $("#password-err")[0].style.display = "block";
+    } else {
+      $("#password-err")[0].style.display = "none";
+    }
 
     return isValid; // Return the validation result
   }
@@ -50,34 +64,31 @@ $(document).ready(function() {
   $("#login-form").on("submit", function(e) {
     e.preventDefault(); // Prevent the form from submitting
 
-    // Validate both fields on form submission
     const isEmailValid = validateEmail();
     const isPasswordValid = validatePassword();
 
-    // Check if both fields are valid
     if (isEmailValid && isPasswordValid) {
-      // If valid, push user data to the users array
       const email = $("#email").val();
       const password = $("#password").val();
       users.push({ email, password });
 
       console.log("====================================");
-      console.log(users); // Log the users array
+      console.log(users);
       console.log("====================================");
-      $("#success").show(); // Show success message
-
-      // Clear the input fields
+      $("#success")[0].style.display = "block";
       $("#email").val("");
       $("#password").val("");
-      $("#total-err").hide(); // Hide total error message on successful submission
+      $("#total-err")[0].style.display = "none";
+      //using this we disable the success message to display none after 2 second
+      setTimeout(function() {
+        $("#success")[0].style.display = "none";
+      }, 2000);
     } else {
-      // Show total error message if fields are invalid
-      $("#total-err")
-        .text("Both fields are required")
-        .show();
+      $("#total-err").text("Both fields are required");
+      $("#total-err")[0].style.display = "block";
     }
 
-    // Hide individual error messages if fields are valid
-    $("#email-err, #password-err").hide();
+    $("#email-err")[0].style.display = "none";
+    $("#password-err")[0].style.display = "none";
   });
 });

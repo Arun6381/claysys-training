@@ -1,188 +1,204 @@
 document.addEventListener("DOMContentLoaded", function() {
   var users = [];
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("dob").setAttribute("max", today);
 
-  // Function to validate first name
   function validateFirstName() {
     const firstname = document.getElementById("firstname").value;
-    const errorElement = document.getElementById("firstname-err");
     if (!firstname) {
-      errorElement.textContent = "First name is required.";
-      errorElement.style.display = "block";
+      document.getElementById("firstname-err").textContent =
+        "First name is required.";
+      document.getElementById("firstname").classList.add("invalid");
       return false;
     } else {
-      errorElement.style.display = "none";
+      document.getElementById("firstname-err").style.display = "none";
+      document.getElementById("firstname").classList.remove("invalid");
+      document.getElementById("firstname").classList.add("valid");
       return true;
     }
   }
 
-  // Function to validate last name
   function validateLastName() {
     const lastname = document.getElementById("lastname").value;
-    const errorElement = document.getElementById("lastname-err");
     if (!lastname) {
-      errorElement.textContent = "Last name is required.";
-      errorElement.style.display = "block";
+      document.getElementById("lastname-err").textContent =
+        "Last name is required.";
+      document.getElementById("lastname").classList.add("invalid");
       return false;
     } else {
-      errorElement.style.display = "none";
+      document.getElementById("lastname-err").style.display = "none";
+      document.getElementById("lastname").classList.remove("invalid");
+      document.getElementById("lastname").classList.add("valid");
       return true;
     }
   }
 
-  // Function to validate email
   function validateEmail() {
     const email = document.getElementById("email").value;
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const errorElement = document.getElementById("email-err");
     if (!email || !emailPattern.test(email)) {
-      errorElement.textContent = "Invalid email format.";
-      errorElement.style.display = "block";
+      document.getElementById("email-err").textContent =
+        "Invalid email format.";
+      document.getElementById("email").classList.add("invalid");
       return false;
     } else {
-      errorElement.style.display = "none";
+      document.getElementById("email-err").style.display = "none";
+      document.getElementById("email").classList.remove("invalid");
+      document.getElementById("email").classList.add("valid");
       return true;
     }
   }
 
-  // Function to validate password
   function validatePassword() {
     const password = document.getElementById("password").value;
     const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    const errorElement = document.getElementById("password-err");
     if (!password || !passwordPattern.test(password)) {
-      errorElement.textContent =
+      document.getElementById("password-err").textContent =
         "Password must be at least 8 characters long and contain letters and numbers.";
-      errorElement.style.display = "block";
+      document.getElementById("password").classList.add("invalid");
       return false;
     } else {
-      errorElement.style.display = "none";
+      document.getElementById("password-err").style.display = "none";
+      document.getElementById("password").classList.remove("invalid");
+      document.getElementById("password").classList.add("valid");
       return true;
     }
   }
 
-  // Function to validate confirm password
   function validateConfirmPassword() {
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirm-password").value;
-    const errorElement = document.getElementById("confirm-password-err");
     if (!confirmPassword || password !== confirmPassword) {
-      errorElement.textContent = "Passwords do not match.";
-      errorElement.style.display = "block";
+      document.getElementById("confirm-password-err").textContent =
+        "Passwords do not match.";
+      document.getElementById("confirm-password").classList.add("invalid");
       return false;
     } else {
-      errorElement.style.display = "none";
+      document.getElementById("confirm-password-err").style.display = "none";
+      document.getElementById("confirm-password").classList.remove("invalid");
+      document.getElementById("confirm-password").classList.add("valid");
       return true;
     }
   }
 
-  // Function to validate phone number
   function validatePhone() {
     const phone = document.getElementById("phone-number").value;
     const phonePattern = /^\d{10}$/;
-    const errorElement = document.getElementById("phone-err");
     if (!phone || !phonePattern.test(phone)) {
-      errorElement.textContent = "Phone number must be 10 digits.";
-      errorElement.style.display = "block";
+      document.getElementById("phone-err").textContent =
+        "Phone number must be 10 digits.";
+      document.getElementById("phone-number").classList.add("invalid");
       return false;
     } else {
-      errorElement.style.display = "none";
+      document.getElementById("phone-err").style.display = "none";
+      document.getElementById("phone-number").classList.remove("invalid");
+      document.getElementById("phone-number").classList.add("valid");
       return true;
     }
   }
 
-  // Function to validate gender
   function validateGender() {
     const gender = document.querySelector("input[name='gender']:checked");
-    const errorElement = document.getElementById("gender-err");
     if (!gender) {
-      errorElement.textContent = "Please select a gender.";
-      errorElement.style.display = "block";
+      document.getElementById("gender-err").textContent =
+        "Please select a gender.";
       return false;
     } else {
-      errorElement.style.display = "none";
+      document.getElementById("gender-err").style.display = "none";
       return true;
     }
   }
 
-  // Function to validate date of birth
   function validateDOB() {
     const dob = document.getElementById("dob").value;
-    const errorElement = document.getElementById("dob-err");
+    const today = new Date().toISOString().split("T")[0];
     if (!dob) {
-      errorElement.textContent = "Date of Birth is required.";
-      errorElement.style.display = "block";
+      document.getElementById("dob-err").textContent =
+        "Date of Birth is required.";
+      document.getElementById("dob").classList.add("invalid");
+      return false;
+    } else if (dob > today) {
+      document.getElementById("dob-err").textContent =
+        "You cannot select a future date.";
+      document.getElementById("dob").classList.add("invalid");
       return false;
     } else {
-      errorElement.style.display = "none";
+      document.getElementById("dob-err").style.display = "none";
+      document.getElementById("dob").classList.remove("invalid");
+      document.getElementById("dob").classList.add("valid");
       return true;
     }
   }
 
-  // Function to validate address
   function validateAddress() {
     const address = document.getElementById("address").value;
-    const errorElement = document.getElementById("address-err");
     if (!address) {
-      errorElement.textContent = "Address is required.";
-      errorElement.style.display = "block";
+      document.getElementById("address-err").textContent =
+        "Address is required.";
+      document.getElementById("address").classList.add("invalid");
       return false;
     } else {
-      errorElement.style.display = "none";
+      document.getElementById("address-err").style.display = "none";
+      document.getElementById("address").classList.remove("invalid");
+      document.getElementById("address").classList.add("valid");
       return true;
     }
   }
 
-  // Function to validate state
   function validateState() {
     const state = document.getElementById("state").value;
-    const errorElement = document.getElementById("state-err");
     if (!state) {
-      errorElement.textContent = "State is required.";
-      errorElement.style.display = "block";
+      document.getElementById("state-err").textContent = "State is required.";
+      document.getElementById("state").classList.add("invalid");
       return false;
     } else {
-      errorElement.style.display = "none";
+      document.getElementById("state-err").style.display = "none";
+      document.getElementById("state").classList.remove("invalid");
+      document.getElementById("state").classList.add("valid");
       return true;
     }
   }
 
-  // Function to validate city
   function validateCity() {
     const city = document.getElementById("city").value;
-    const errorElement = document.getElementById("city-err");
     if (!city) {
-      errorElement.textContent = "City is required.";
-      errorElement.style.display = "block";
+      document.getElementById("city-err").textContent = "City is required.";
+      document.getElementById("city").classList.add("invalid");
       return false;
     } else {
-      errorElement.style.display = "none";
+      document.getElementById("city-err").style.display = "none";
+      document.getElementById("city").classList.remove("invalid");
+      document.getElementById("city").classList.add("valid");
       return true;
     }
   }
 
-  // Function to validate username
   function validateUsername() {
     const username = document.getElementById("username").value;
     const usernamePattern = /^[a-zA-Z0-9]{3,15}$/;
-    const errorElement = document.getElementById("user-err");
     if (!username || !usernamePattern.test(username)) {
-      errorElement.textContent =
+      document.getElementById("user-err").textContent =
         "Username must be between 3 and 15 characters.";
-      errorElement.style.display = "block";
+      document.getElementById("username").classList.add("invalid");
       return false;
     } else {
-      errorElement.style.display = "none";
+      document.getElementById("user-err").style.display = "none";
+      document.getElementById("username").classList.remove("invalid");
+      document.getElementById("username").classList.add("valid");
       return true;
     }
   }
 
-  // Attach onkeyup events for real-time validation
   document
     .getElementById("firstname")
     .addEventListener("keyup", validateFirstName);
   document
     .getElementById("lastname")
     .addEventListener("keyup", validateLastName);
+  document.querySelectorAll("input[name='gender']").forEach((input) => {
+    input.addEventListener("change", validateGender);
+  });
+  document.getElementById("dob").addEventListener("change", validateDOB);
   document.getElementById("email").addEventListener("keyup", validateEmail);
   document
     .getElementById("password")
@@ -196,14 +212,14 @@ document.addEventListener("DOMContentLoaded", function() {
   document
     .getElementById("username")
     .addEventListener("keyup", validateUsername);
+  document.getElementById("address").addEventListener("keyup", validateAddress);
+  document.getElementById("state").addEventListener("change", validateState);
+  document.getElementById("city").addEventListener("change", validateCity);
 
-  // Handle form submission
   document
     .getElementById("register-form")
     .addEventListener("submit", function(e) {
-      e.preventDefault(); // Prevent default form submission
-
-      // Validate all fields before submission
+      e.preventDefault();
       const isFirstNameValid = validateFirstName();
       const isLastNameValid = validateLastName();
       const isEmailValid = validateEmail();
@@ -217,7 +233,6 @@ document.addEventListener("DOMContentLoaded", function() {
       const isCityValid = validateCity();
       const isUsernameValid = validateUsername();
 
-      // Submit form if all validations pass
       if (
         isFirstNameValid &&
         isLastNameValid &&
@@ -232,61 +247,22 @@ document.addEventListener("DOMContentLoaded", function() {
         isCityValid &&
         isUsernameValid
       ) {
-        const firstname = document.getElementById("firstname").value;
-        const lastname = document.getElementById("lastname").value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const dob = document.getElementById("dob").value;
-        const gender = document.querySelector("input[name='gender']:checked")
-          .value;
-        const phone = document.getElementById("phone-number").value;
-        const address = document.getElementById("address").value;
-        const state = document.getElementById("state").value;
-        const city = document.getElementById("city").value;
-        const username = document.getElementById("username").value;
-
-        users.push({
-          firstname: firstname,
-          lastname: lastname,
-          email: email,
-          password: password,
-          DateofBirth: dob,
-          Gender: gender,
-          PhoneNumber: phone,
-          Address: address,
-          State: state,
-          City: city,
-          UserName: username,
-        });
-
-        console.log("====================================");
+        const newUser = {
+          firstname: document.getElementById("firstname").value,
+          lastname: document.getElementById("lastname").value,
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value,
+          dob: document.getElementById("dob").value,
+          phone: document.getElementById("phone-number").value,
+          gender: document.querySelector("input[name='gender']:checked").value,
+          address: document.getElementById("address").value,
+          state: document.getElementById("state").value,
+          city: document.getElementById("city").value,
+          username: document.getElementById("username").value,
+        };
+        users.push(newUser);
         console.log(users);
-        console.log("====================================");
+        alert("User registered successfully!");
       }
     });
-
-  // Update cities based on selected state
-  function updateCities() {
-    const state = document.getElementById("state").value;
-    const cities = {
-      "tamil nadu": ["Chennai", "Coimbatore", "Madurai"],
-      kerala: ["Kochi", "Trivandrum", "Calicut"],
-      karnataka: ["Bangalore", "Mysore", "Mangalore"],
-    };
-
-    const citySelect = document.getElementById("city");
-    citySelect.innerHTML = ""; // Clear existing options
-
-    if (cities[state]) {
-      cities[state].forEach(function(city) {
-        const option = document.createElement("option");
-        option.value = city.toLowerCase();
-        option.textContent = city;
-        citySelect.appendChild(option);
-      });
-    }
-  }
-
-  // Attach change event to the state dropdown
-  document.getElementById("state").addEventListener("change", updateCities);
 });

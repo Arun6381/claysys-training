@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Array to store user data
+  // creating a Array to store user data
   const users = [];
 
   // Function to validate the email field
@@ -10,17 +10,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const isValid =
       email && /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 
-    // Toggle CSS classes based on validity
+    // selecting CSS classes based on validity
     emailInput.classList.toggle("invalid", !isValid);
     emailInput.classList.toggle("valid", isValid);
     // Show or hide the error message
     emailErr.textContent = isValid ? "" : "Invalid email format.";
     emailErr.style.display = isValid ? "none" : "block";
 
-    return isValid; // Return the validation result
+    return isValid; // return the validation result
   }
 
-  // Function to validate the password field
+  // function to validate the password field
   function validatePassword() {
     const passwordInput = document.getElementById("password");
     const passwordErr = document.getElementById("password-err");
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const isValid =
       password && /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password);
 
-    // Toggle CSS classes based on validity
+    // selecting CSS classes based on validity
     passwordInput.classList.toggle("invalid", !isValid);
     passwordInput.classList.toggle("valid", isValid);
     // Show or hide the error message
@@ -59,7 +59,10 @@ document.addEventListener("DOMContentLoaded", function() {
       // If valid, push user data to the users array
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
-      users.push({ email, password });
+      users.push({
+        email,
+        password,
+      });
 
       console.log("====================================");
       console.log(users); // Log the users array

@@ -70,28 +70,19 @@ input[type="radio"] {
     display: none; 
 }
 
-input.valid {
+input.valid,textarea.valid,select.valid, .custom-date-picker input.valid  {
     border: 2px solid green;
 }
 
-input.invalid {
+input.invalid,textarea.invalid,select.invalid, .custom-date-picker input.invalid  {
     border: 2px solid red;
 }
 input, select, textarea {
-  border: 1px solid #ccc; /* Default border color */
+  border: 1px solid #ccc; 
   padding: 8px;
   outline: none;
-  transition: border-color 0.3s ease; /* Smooth transition */
-}
 
-input.valid, select.valid, textarea.valid {
-  border-color: green; /* Border color for valid inputs */
 }
-
-input.invalid, select.invalid, textarea.invalid {
-  border-color: red; /* Border color for invalid inputs */
-}
-
 
 .btns{
     display: flex;
