@@ -19,13 +19,16 @@
         <div class="form-container">
             <form id="register-form">
                 <h2>Personal Information</h2>
-                <label for="firstname">First Name:</label>
-                <input type="text" id="firstname" name="firstname" placeholder="Enter your First Name">
-                <span id="firstname-err" class="error-message"></span>
-
-                <label for="lastname">Last Name:</label>
-                <input type="text" id="lastname" name="lastname" placeholder="Enter your Last Name">
-                <span id="lastname-err" class="error-message"></span>
+                <div class="floating-label">
+                    <input type="text" id="firstname" name="firstname" placeholder=" " />
+                    <label for="firstname">First Name</label>
+                    <span id="firstname-err" class="error-message"></span>
+                </div>
+                <div class="floating-label">
+                    <input type="text" id="lastname" name="lastname" placeholder=" " />
+                    <label for="lastname">Last Name</label>
+                    <span id="lastname-err" class="error-message"></span>
+                </div>
 
                 <label for="dob">Date of Birth:</label>
                 <input type="date" id="dob" name="dob">
@@ -47,16 +50,18 @@
                 <label for="phone-number">Phone Number:</label>
                 <input type="tel" id="phone-number" placeholder="Enter your phone number" pattern="[0-9]{10}">
                 <span id="phone-err" class="error-message"></span>
-
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your Email">
-                <span id="email-err" class="error-message"></span>
-
+                <div class="floating-label">
+                    <input type="email" id="email" name="email" placeholder="">
+                    <label for="email">Email Address:</label>
+                    <span id="email-err" class="error-message"></span>
+                </div>
                 <h2>Address</h2>
-                <label for="address">Address:</label>
-                <textarea id="address" name="address" placeholder="Enter your Address"></textarea>
-                <span id="address-err" class="error-message"></span>
+                <div class="floating-label"  >
 
+                    <input id="address" name="address" placeholder="" style="width:95%;"/>
+                    <label for="address">Address:</label>
+                    <span id="address-err" class="error-message"></span>
+                </div>
                 <label for="state">State:</label>
                 <select id="state" name="state" onchange="updateCities()">
                     <option value="">Select State</option>
@@ -74,18 +79,22 @@
                 <span id="city-err" class="error-message"></span>
 
                 <h2>Account Information</h2>
-                <label for="username">User Name:</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="username">
-                <span id="user-err" class="error-message"></span>
-
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="new-password">
-                <span id="password-err" class="error-message"></span>
-
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" autocomplete="new-password">
-                <span id="confirm-password-err" class="error-message"></span>
-
+                <div class="floating-label">
+                    <input type="text" id="username" name="username" placeholder="" autocomplete="username">
+                    <label for="username">User Name:</label>
+                    <span id="user-err" class="error-message"></span>
+                </div>
+                <div class="floating-label">
+                    <input type="password" id="password" name="password" placeholder="" autocomplete="new-password">
+                    <label for="password">Password:</label>
+                    <span id="password-err" class="error-message"></span>
+                </div>
+                <div class="floating-label">
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder=""
+                        autocomplete="new-password">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <span id="confirm-password-err" class="error-message"></span>
+                </div>
                 <div class="btns">
                     <button type="button">Back</button>
                     <button type="submit" id="sign-up">Sign Up</button>

@@ -325,25 +325,21 @@ $(document).ready(function() {
     }
   });
 
-  function updateCities() {
-    const state = $("#state").val();
-    const cities = {
-      "tamil nadu": ["Chennai", "Coimbatore", "Madurai"],
-      kerala: ["Kochi", "Thiruvananthapuram", "Kozhikode"],
-      goa: ["Panaji", "Vasco da Gama"],
-      "andhra pradesh": ["Visakhapatnam", "Vijayawada", "Guntur"],
-    };
-
-    $("#city")
-      .empty()
-      .append('<option value="">Select City</option>');
-    if (cities[state]) {
-      cities[state].forEach((city) =>
-        $("#city").append(new Option(city, city))
-      );
-    }
-  }
-
-  
   $("#state").on("change", updateCities);
 });
+function updateCities() {
+  const state = $("#state").val();
+  const cities = {
+    "tamil nadu": ["Chennai", "Coimbatore", "Madurai"],
+    kerala: ["Kochi", "Thiruvananthapuram", "Kozhikode"],
+    goa: ["Panaji", "Vasco da Gama"],
+    "andhra pradesh": ["Visakhapatnam", "Vijayawada", "Guntur"],
+  };
+
+  $("#city")
+    .empty()
+    .append('<option value="">Select City</option>');
+  if (cities[state]) {
+    cities[state].forEach((city) => $("#city").append(new Option(city, city)));
+  }
+}
