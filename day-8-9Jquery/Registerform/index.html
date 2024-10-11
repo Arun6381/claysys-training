@@ -13,6 +13,8 @@
 <body>
     <div class="container">
         <div class="heading">
+                      <span id="success" style="color: rgb(38, 214, 53); display:none; font-size:xx-large;  font-weight:bolder;">Login Successfully completed</span>
+
             <h1>Create Your Account</h1>
             <p>Join us today and start your journey!</p>
         </div>
@@ -22,7 +24,7 @@
                 <div class="floating-label">
                     <input type="text" id="firstname" name="firstname" placeholder=" " />
                     <label for="firstname">First Name</label>
-                    <span id="firstname-err" class="error-message"></span>
+                    <span id="firstname-err" class="error-message" style="  margin-bottom: 110px;"></span>
                 </div>
                 <div class="floating-label">
                     <input type="text" id="lastname" name="lastname" placeholder=" " />
@@ -34,7 +36,7 @@
                 <input type="date" id="dob" name="dob">
                 <span id="dob-err" class="error-message"></span>
 
-                <label>Gender:</label>
+                <label>Gender</label>
                 <label for="male">
                     <input type="radio" id="male" name="gender" value="male"> Male
                 </label>
@@ -50,16 +52,17 @@
                 <label for="phone-number">Phone Number:</label>
                 <input type="tel" id="phone-number" placeholder="Enter your phone number" pattern="[0-9]{10}">
                 <span id="phone-err" class="error-message"></span>
-                <div class="floating-label">
+                <div class="floating-label"  style="margin-top: 15px;">
                     <input type="email" id="email" name="email" placeholder="">
-                    <label for="email">Email Address:</label>
+                    <label for="email">Email Address</label>
                     <span id="email-err" class="error-message"></span>
                 </div>
+
                 <h2>Address</h2>
                 <div class="floating-label"  >
 
                     <input id="address" name="address" placeholder="" style="width:95%;"/>
-                    <label for="address">Address:</label>
+                    <label for="address">Address</label>
                     <span id="address-err" class="error-message"></span>
                 </div>
                 <label for="state">State:</label>
@@ -81,18 +84,18 @@
                 <h2>Account Information</h2>
                 <div class="floating-label">
                     <input type="text" id="username" name="username" placeholder="" autocomplete="username">
-                    <label for="username">User Name:</label>
+                    <label for="username">User Name</label>
                     <span id="user-err" class="error-message"></span>
                 </div>
                 <div class="floating-label">
                     <input type="password" id="password" name="password" placeholder="" autocomplete="new-password">
-                    <label for="password">Password:</label>
+                    <label for="password">Password</label>
                     <span id="password-err" class="error-message"></span>
                 </div>
                 <div class="floating-label">
                     <input type="password" id="confirm-password" name="confirm-password" placeholder=""
                         autocomplete="new-password">
-                    <label for="confirm-password">Confirm Password:</label>
+                    <label for="confirm-password">Confirm Password</label>
                     <span id="confirm-password-err" class="error-message"></span>
                 </div>
                 <div class="btns">

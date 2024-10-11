@@ -123,10 +123,10 @@ $(document).ready(function() {
       return true;
     }
   }
-
   function validateDOB() {
     const dob = $("#dob").val();
-    const today = new Date().toISOString().split("T")[0];
+    const today = new Date();
+    const todayFormatted = today.toISOString().split("T")[0];
 
     if (!dob) {
       $("#dob-err")
@@ -134,18 +134,37 @@ $(document).ready(function() {
         .show();
       $("#dob").addClass("invalid");
       return false;
-    } else if (dob > today) {
+    } else if (dob > todayFormatted) {
       $("#dob-err")
         .text("You cannot select a future date.")
         .show();
       $("#dob").addClass("invalid");
       return false;
     } else {
-      $("#dob-err").hide();
-      $("#dob")
-        .removeClass("invalid")
-        .addClass("valid");
-      return true;
+      const dobDate = new Date(dob);
+      const age = today.getFullYear() - dobDate.getFullYear();
+      const monthDifference = today.getMonth() - dobDate.getMonth();
+
+      if (
+        monthDifference < 0 ||
+        (monthDifference === 0 && today.getDate() < dobDate.getDate())
+      ) {
+        age--;
+      }
+
+      if (age < 18) {
+        $("#dob-err")
+          .text("You must be at least 18 years old.")
+          .show();
+        $("#dob").addClass("invalid");
+        return false;
+      } else {
+        $("#dob-err").hide();
+        $("#dob")
+          .removeClass("invalid")
+          .addClass("valid");
+        return true;
+      }
     }
   }
 
@@ -218,15 +237,23 @@ $(document).ready(function() {
     }
   }
 
+  $("#firstname").on("focusout", validateFirstName);
   $("#firstname").on("keyup", validateFirstName);
+  $("#lastname").on("focusout", validateLastName);
   $("#lastname").on("keyup", validateLastName);
   $("input[name='gender']").on("change", validateGender);
   $("#dob").on("change", validateDOB);
+  $("#email").on("focusout", validateEmail);
   $("#email").on("keyup", validateEmail);
+  $("#password").on("focusout", validatePassword);
   $("#password").on("keyup", validatePassword);
+  $("#confirm-password").on("focusout", validateConfirmPassword);
   $("#confirm-password").on("keyup", validateConfirmPassword);
+  $("#phone-number").on("focusout", validatePhone);
   $("#phone-number").on("keyup", validatePhone);
+  $("#username").on("focusout", validateUsername);
   $("#username").on("keyup", validateUsername);
+  $("#address").on("focusout", validateAddress);
   $("#address").on("keyup", validateAddress);
   $("#state").on("change", validateState);
   $("#city").on("change", validateCity);
