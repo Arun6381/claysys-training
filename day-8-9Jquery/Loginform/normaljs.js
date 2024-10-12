@@ -1,62 +1,69 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // creating a Array to store user data
+  // Array to store user data
   const users = [];
 
   // Function to validate the email field
   function validateEmail() {
-    const emailInput = document.getElementById("email");
-    const emailErr = document.getElementById("email-err");
-    const email = emailInput.value;
+    const email = document.getElementById("email").value;
     const isValid =
       email && /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 
-    // selecting CSS classes based on validity
-    emailInput.classList.toggle("invalid", !isValid);
-    emailInput.classList.toggle("valid", isValid);
-    // Show or hide the error message
-    emailErr.textContent = isValid ? "" : "Invalid email format.";
-    emailErr.style.display = isValid ? "none" : "block";
+    // Show or hide the error message based on validity
+    if (!isValid) {
+      document.getElementById("email-err").textContent =
+        "Invalid email format.";
+      document.getElementById("email-err").style.display = "block";
+      document.getElementById("email").classList.remove("valid");
+      document.getElementById("email").classList.add("invalid");
+    } else {
+      document.getElementById("email-err").style.display = "none";
+      document.getElementById("email").classList.remove("invalid");
+      document.getElementById("email").classList.add("valid");
+    }
 
-    return isValid; // return the validation result
+    return isValid;
   }
 
-  // function to validate the password field
+  // Function to validate the password field
   function validatePassword() {
-    const passwordInput = document.getElementById("password");
-    const passwordErr = document.getElementById("password-err");
-    const password = passwordInput.value;
+    const password = document.getElementById("password").value;
     const isValid =
       password && /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password);
 
-    // selecting CSS classes based on validity
-    passwordInput.classList.toggle("invalid", !isValid);
-    passwordInput.classList.toggle("valid", isValid);
-    // Show or hide the error message
-    passwordErr.textContent = isValid
-      ? ""
-      : "Password must be at least 8 characters long and contain letters and numbers.";
-    passwordErr.style.display = isValid ? "none" : "block";
+    // Show or hide the error message based on validity
+    if (!isValid) {
+      document.getElementById("password-err").textContent =
+        "Password must be at least 8 characters long and contain letters and numbers.";
+      document.getElementById("password-err").style.display = "block";
+      document.getElementById("password").classList.remove("valid");
+      document.getElementById("password").classList.add("invalid");
+    } else {
+      document.getElementById("password-err").style.display = "none";
+      document.getElementById("password").classList.remove("invalid");
+      document.getElementById("password").classList.add("valid");
+    }
 
     return isValid; // Return the validation result
   }
 
-  // Event handler for validating fields on keyup
+  // Event handler for validating fields on keyup and focusout
   document.getElementById("email").addEventListener("keyup", validateEmail);
+  document.getElementById("email").addEventListener("focusout", validateEmail);
   document
     .getElementById("password")
     .addEventListener("keyup", validatePassword);
+  document
+    .getElementById("password")
+    .addEventListener("focusout", validatePassword);
 
   // Event handler for form submission
   document.getElementById("login-form").addEventListener("submit", function(e) {
     e.preventDefault(); // Prevent the form from submitting
 
-    // Validate both fields on form submission
     const isEmailValid = validateEmail();
     const isPasswordValid = validatePassword();
 
-    // Check if both fields are valid
     if (isEmailValid && isPasswordValid) {
-      // If valid, push user data to the users array
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
       users.push({
@@ -65,22 +72,23 @@ document.addEventListener("DOMContentLoaded", function() {
       });
 
       console.log("====================================");
-      console.log(users); // Log the users array
+      console.log(users);
       console.log("====================================");
-      document.getElementById("success").style.display = "block"; // Show success message
-
-      // Clear the input fields
+      document.getElementById("success").style.display = "block";
       document.getElementById("email").value = "";
       document.getElementById("password").value = "";
-      document.getElementById("total-err").style.display = "none"; // Hide total error message on successful submission
+      document.getElementById("total-err").style.display = "none";
+
+      // Hide the success message after 2 seconds
+      setTimeout(function() {
+        document.getElementById("success").style.display = "none";
+      }, 2000);
     } else {
-      // Show total error message if fields are invalid
       document.getElementById("total-err").textContent =
         "Both fields are required";
       document.getElementById("total-err").style.display = "block";
     }
 
-    // Hide individual error messages if fields are valid
     document.getElementById("email-err").style.display = "none";
     document.getElementById("password-err").style.display = "none";
   });

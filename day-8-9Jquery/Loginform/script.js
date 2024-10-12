@@ -8,24 +8,19 @@ $(document).ready(function() {
     const isValid =
       email && /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 
-    // Add or remove 'invalid' and 'valid' classes based on validity
-    if (isValid) {
-      $("#email").removeClass("invalid");
-      $("#email").addClass("valid");
-    } else {
-      $("#email").removeClass("valid");
-      $("#email").addClass("invalid");
-    }
-
     // Show or hide the error message based on validity
     if (!isValid) {
       $("#email-err").text("Invalid email format.");
       $("#email-err")[0].style.display = "block";
+      $("#email").removeClass("valid");
+      $("#email").addClass("invalid");
     } else {
       $("#email-err")[0].style.display = "none";
+      $("#email").removeClass("invalid");
+      $("#email").addClass("valid");
     }
 
-    return isValid; // Return the validation result
+    return isValid;
   }
 
   // Function to validate the password field
@@ -34,23 +29,18 @@ $(document).ready(function() {
     const isValid =
       password && /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password);
 
-    // Add or remove 'invalid' and 'valid' classes based on validity
-    if (isValid) {
-      $("#password").removeClass("invalid");
-      $("#password").addClass("valid");
-    } else {
-      $("#password").removeClass("valid");
-      $("#password").addClass("invalid");
-    }
-
     // Show or hide the error message based on validity
     if (!isValid) {
       $("#password-err").text(
         "Password must be at least 8 characters long and contain letters and numbers."
       );
       $("#password-err")[0].style.display = "block";
+      $("#password").removeClass("valid");
+      $("#password").addClass("invalid");
     } else {
       $("#password-err")[0].style.display = "none";
+      $("#password").removeClass("invalid");
+      $("#password").addClass("valid");
     }
 
     return isValid; // Return the validation result
@@ -58,7 +48,9 @@ $(document).ready(function() {
 
   // Event handler for validating fields on keyup
   $("#email").on("keyup", validateEmail);
+  $("#email").on("focusout", validateEmail);
   $("#password").on("keyup", validatePassword);
+  $("#password").on("focusout", validatePassword);
 
   // Event handler for form submission
   $("#login-form").on("submit", function(e) {

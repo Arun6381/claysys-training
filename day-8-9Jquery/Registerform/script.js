@@ -123,234 +123,221 @@ $(document).ready(function() {
       return true;
     }
   }
-  function validateDOB() {
-    const dob = $("#dob").val();
-    const today = new Date();
-    const todayFormatted = today.toISOString().split("T")[0];
+ function validateDOB() {
+   const dobInput = document.getElementById("dob");
+   const dob = dobInput.value;
+   const today = new Date();
+   const todayFormatted = today.toISOString().split("T")[0];
+   const dobErr = document.getElementById("dob-err");
 
-    if (!dob) {
-      $("#dob-err")
-        .text("Date of Birth is required.")
-        .show();
-      $("#dob").addClass("invalid");
-      return false;
-    } else if (dob > todayFormatted) {
-      $("#dob-err")
-        .text("You cannot select a future date.")
-        .show();
-      $("#dob").addClass("invalid");
-      return false;
-    } else {
-      const dobDate = new Date(dob);
-      const age = today.getFullYear() - dobDate.getFullYear();
-      const monthDifference = today.getMonth() - dobDate.getMonth();
+   // Reset error messages and classes
+   dobErr.textContent = "";
+   dobInput.classList.remove("invalid", "valid");
 
-      if (
-        monthDifference < 0 ||
-        (monthDifference === 0 && today.getDate() < dobDate.getDate())
-      ) {
-        age--;
-      }
+   if (!dob) {
+     dobErr.textContent = "Date of Birth is required.";
+     dobInput.classList.add("invalid");
+     return false;
+   }
 
-      if (age < 18) {
-        $("#dob-err")
-          .text("You must be at least 18 years old.")
-          .show();
-        $("#dob").addClass("invalid");
-        return false;
-      } else {
-        $("#dob-err").hide();
-        $("#dob")
-          .removeClass("invalid")
-          .addClass("valid");
-        return true;
-      }
-    }
-  }
+   if (dob > todayFormatted) {
+     dobErr.textContent = "You cannot select a future date.";
+     dobInput.classList.add("invalid");
+     return false;
+   }
 
-  function validateAddress() {
-    const address = $("#address").val();
-    if (!address) {
-      $("#address-err")
-        .text("Address is required.")
-        .show();
-      $("#address").addClass("invalid");
-      return false;
-    } else {
-      $("#address-err").hide();
-      $("#address")
-        .removeClass("invalid")
-        .addClass("valid");
-      return true;
-    }
-  }
+   const dobDate = new Date(dob);
+   let age = today.getFullYear() - dobDate.getFullYear();
+   const monthDifference = today.getMonth() - dobDate.getMonth();
 
-  function validateState() {
-    const state = $("#state").val();
-    if (!state) {
-      $("#state-err")
-        .text("State is required.")
-        .show();
-      $("#state").addClass("invalid");
-      return false;
-    } else {
-      $("#state-err").hide();
-      $("#state")
-        .removeClass("invalid")
-        .addClass("valid");
-      return true;
-    }
-  }
+   if (
+     monthDifference < 0 ||
+     (monthDifference === 0 && today.getDate() < dobDate.getDate())
+   ) {
+     age--;
+   }
 
-  function validateCity() {
-    const city = $("#city").val();
-    if (!city) {
-      $("#city-err")
-        .text("City is required.")
-        .show();
-      $("#city").addClass("invalid");
-      return false;
-    } else {
-      $("#city-err").hide();
-      $("#city")
-        .removeClass("invalid")
-        .addClass("valid");
-      return true;
-    }
-  }
+   if (age < 18) {
+     dobErr.textContent = "You must be at least 18 years old.";
+     dobInput.classList.add("invalid");
+     return false;
+   }
 
-  function validateUsername() {
-    const username = $("#username").val();
-    const usernamePattern = /^[a-zA-Z0-9]{3,15}$/;
-    if (!username || !usernamePattern.test(username)) {
-      $("#user-err")
-        .text("Username must be between 3 and 15 characters.")
-        .show();
-      $("#username").addClass("invalid");
-      return false;
-    } else {
-      $("#user-err").hide();
-      $("#username")
-        .removeClass("invalid")
-        .addClass("valid");
-      return true;
-    }
-  }
+   dobInput.classList.add("valid");
+   return true;
+ }
 
-  $("#firstname").on("focusout", validateFirstName);
-  $("#firstname").on("keyup", validateFirstName);
-  $("#lastname").on("focusout", validateLastName);
-  $("#lastname").on("keyup", validateLastName);
-  $("input[name='gender']").on("change", validateGender);
-  $("#dob").on("change", validateDOB);
-  $("#email").on("focusout", validateEmail);
-  $("#email").on("keyup", validateEmail);
-  $("#password").on("focusout", validatePassword);
-  $("#password").on("keyup", validatePassword);
-  $("#confirm-password").on("focusout", validateConfirmPassword);
-  $("#confirm-password").on("keyup", validateConfirmPassword);
-  $("#phone-number").on("focusout", validatePhone);
-  $("#phone-number").on("keyup", validatePhone);
-  $("#username").on("focusout", validateUsername);
-  $("#username").on("keyup", validateUsername);
-  $("#address").on("focusout", validateAddress);
-  $("#address").on("keyup", validateAddress);
-  $("#state").on("change", validateState);
-  $("#city").on("change", validateCity);
+ function validateAddress() {
+   const address = $("#address").val();
+   if (!address) {
+     $("#address-err")
+       .text("Address is required.")
+       .show();
+     $("#address").addClass("invalid");
+     return false;
+   } else {
+     $("#address-err").hide();
+     $("#address")
+       .removeClass("invalid")
+       .addClass("valid");
+     return true;
+   }
+ }
 
-  $("#register-form").on("submit", function(e) {
-    e.preventDefault();
+ function validateState() {
+   const state = $("#state").val();
+   if (!state) {
+     $("#state-err")
+       .text("State is required.")
+       .show();
+     $("#state").addClass("invalid");
+     return false;
+   } else {
+     $("#state-err").hide();
+     $("#state")
+       .removeClass("invalid")
+       .addClass("valid");
+     return true;
+   }
+ }
 
-    const isFirstNameValid = validateFirstName();
-    const isLastNameValid = validateLastName();
-    const isEmailValid = validateEmail();
-    const isPasswordValid = validatePassword();
-    const isConfirmPasswordValid = validateConfirmPassword();
-    const isPhoneValid = validatePhone();
-    const isGenderValid = validateGender();
-    const isDOBValid = validateDOB();
-    const isAddressValid = validateAddress();
-    const isStateValid = validateAddress();
-    const isCityValid = validateCity();
-    const isUsernameValid = validateUsername();
+ function validateCity() {
+   const city = $("#city").val();
+   if (!city) {
+     $("#city-err")
+       .text("City is required.")
+       .show();
+     $("#city").addClass("invalid");
+     return false;
+   } else {
+     $("#city-err").hide();
+     $("#city")
+       .removeClass("invalid")
+       .addClass("valid");
+     return true;
+   }
+ }
 
-    if (
-      isFirstNameValid &&
-      isLastNameValid &&
-      isEmailValid &&
-      isPasswordValid &&
-      isConfirmPasswordValid &&
-      isPhoneValid &&
-      isGenderValid &&
-      isDOBValid &&
-      isAddressValid &&
-      isStateValid &&
-      isCityValid &&
-      isUsernameValid
-    ) {
-      var firstname = $("#firstname").val();
-      var lastname = $("#lastname").val();
-      var email = $("#email").val();
-      var password = $("#password").val();
-      var dob = $("#dob").val();
-      var gender = $('input[name="gender"]:checked').val();
-      var phone = $("#phone-number").val();
-      var address = $("#address").val();
-      var state = $("#state").val();
-      var city = $("#city").val();
-      var username = $("#username").val();
+ function validateUsername() {
+   const username = $("#username").val();
+   const usernamePattern = /^[a-zA-Z0-9]{3,15}$/;
+   if (!username || !usernamePattern.test(username)) {
+     $("#user-err")
+       .text("Username must be between 3 and 15 characters.")
+       .show();
+     $("#username").addClass("invalid");
+     return false;
+   } else {
+     $("#user-err").hide();
+     $("#username")
+       .removeClass("invalid")
+       .addClass("valid");
+     return true;
+   }
+ }
 
-      users.push({
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        password: password,
-        DateofBirth: dob,
-        Gender: gender,
-        PhoneNumber: phone,
-        Address: address,
-        State: state,
-        City: city,
-        UserName: username,
-        Password: password,
-      });
+ $("#firstname").on("focusout", validateFirstName);
+ $("#firstname").on("keyup", validateFirstName);
+ $("#lastname").on("focusout", validateLastName);
+ $("#lastname").on("keyup", validateLastName);
+ $("input[name='gender']").on("change", validateGender);
+ $("#dob").on("change", validateDOB);
+ $("#email").on("focusout", validateEmail);
+ $("#email").on("keyup", validateEmail);
+ $("#password").on("focusout", validatePassword);
+ $("#password").on("keyup", validatePassword);
+ $("#confirm-password").on("focusout", validateConfirmPassword);
+ $("#confirm-password").on("keyup", validateConfirmPassword);
+ $("#phone-number").on("focusout", validatePhone);
+ $("#phone-number").on("keyup", validatePhone);
+ $("#username").on("focusout", validateUsername);
+ $("#username").on("keyup", validateUsername);
+ $("#address").on("focusout", validateAddress);
+ $("#address").on("keyup", validateAddress);
+ $("#state").on("change", validateState);
+ $("#city").on("change", validateCity);
 
-      $("#success")[0].style.display = "block";
-      console.log("====================================");
-      console.log(users);
-      console.log("====================================");
-      $("#firstname").val("");
-      $("#lastname").val("");
-      $("#email").val("");
-      $("#password").val("");
+ $("#register-form").on("submit", function(e) {
+   e.preventDefault();
 
-      $("#confirm-password").val("");
-      $("#dob").val("");
-      $('input[name="gender"]').prop("checked", false);
-      $("#phone-number").val("");
-      $("#address").val("");
-      $("#state").val("");
-      $("#city").val("");
-      $("#username").val("");
+   const isFirstNameValid = validateFirstName();
+   const isLastNameValid = validateLastName();
+   const isEmailValid = validateEmail();
+   const isPasswordValid = validatePassword();
+   const isConfirmPasswordValid = validateConfirmPassword();
+   const isPhoneValid = validatePhone();
+   const isGenderValid = validateGender();
+   const isDOBValid = validateDOB();
+   const isAddressValid = validateAddress();
+   const isStateValid = validateAddress();
+   const isCityValid = validateCity();
+   const isUsernameValid = validateUsername();
 
-      setTimeout(function() {
-        $("#firstname").removeClass("valid");
-        $("#lastname").removeClass("valid");
-        $("#email").removeClass("valid");
-        $("#password").removeClass("valid");
+   if (
+     isFirstNameValid &&
+     isLastNameValid &&
+     isEmailValid &&
+     isPasswordValid &&
+     isConfirmPasswordValid &&
+     isPhoneValid &&
+     isGenderValid &&
+     isDOBValid &&
+     isAddressValid &&
+     isStateValid &&
+     isCityValid &&
+     isUsernameValid
+   ) {
+     var firstname = $("#firstname").val();
+     var lastname = $("#lastname").val();
+     var email = $("#email").val();
+     var password = $("#password").val();
+     var dob = $("#dob").val();
+     var gender = $('input[name="gender"]:checked').val();
+     var phone = $("#phone-number").val();
+     var address = $("#address").val();
+     var state = $("#state").val();
+     var city = $("#city").val();
+     var username = $("#username").val();
 
-        $("#confirm-password").removeClass("valid");
-        $("#dob").removeClass("valid");
+     users.push({
+       firstname: firstname,
+       lastname: lastname,
+       email: email,
+       password: password,
+       DateofBirth: dob,
+       Gender: gender,
+       PhoneNumber: phone,
+       Address: address,
+       State: state,
+       City: city,
+       UserName: username,
+       Password: password,
+     });
 
-        $("#phone-number").removeClass("valid");
-        $("#address").removeClass("valid");
-        $("#state").removeClass("valid");
-        $("#city").removeClass("valid");
-        $("#username").removeClass("valid");
-        $("#success")[0].style.display = "none";
-      }, 2000);
-    }
-  });
+     $("#success")[0].style.display = "block";
+     console.log("====================================");
+     console.log(users);
+     console.log("====================================");
+
+     setTimeout(function() {
+       $("#firstname").removeClass("valid");
+       $("#lastname").removeClass("valid");
+       $("#email").removeClass("valid");
+       $("#password").removeClass("valid");
+
+       $("#confirm-password").removeClass("valid");
+       $("#dob").removeClass("valid");
+
+       $("#phone-number").removeClass("valid");
+       $("#address").removeClass("valid");
+       $("#state").removeClass("valid");
+       $("#city").removeClass("valid");
+       $("#username").removeClass("valid");
+       $("#success")[0].style.display = "none";
+       $("#register-form")[0].reset();
+     }, 2000);
+   }
+ });
 
   $("#state").on("change", updateCities);
 });
