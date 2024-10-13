@@ -334,7 +334,7 @@ $(document).ready(function() {
        $("#city").removeClass("valid");
        $("#username").removeClass("valid");
        $("#success")[0].style.display = "none";
-       $("#register-form")[0].reset();
+             $("#register-form")[0].reset();
      }, 2000);
    }
  });
