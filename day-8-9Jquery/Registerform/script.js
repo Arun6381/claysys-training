@@ -3,113 +3,137 @@ $(document).ready(function() {
   const today = new Date().toISOString().split("T")[0];
   $("#dob").attr("max", today);
 
-  function validateFirstName() {
-    const firstname = $("#firstname").val();
-    if (!firstname) {
-      $("#firstname-err")
-        .text("First name is required.")
-        .show();
-      $("#firstname").addClass("invalid");
-      return false;
-    } else {
-      $("#firstname-err").hide();
-      $("#firstname")
-        .removeClass("invalid")
-        .addClass("valid");
-      return true;
-    }
-  }
+function validateFirstName() {
+  var userregx = /^[a-zA-Z]+$/;
+  const firstname = $("#firstname").val();
 
-  function validateLastName() {
-    const lastname = $("#lastname").val();
-    if (!lastname) {
-      $("#lastname-err")
-        .text("Last name is required.")
-        .show();
-      $("#lastname").addClass("invalid");
-      return false;
-    } else {
-      $("#lastname-err").hide();
-      $("#lastname")
-        .removeClass("invalid")
-        .addClass("valid");
-      return true;
-    }
+  if (!firstname) {
+    $("#firstname-err")
+      .text("First name is required.")
+      .show();
+    $("#firstname").addClass("invalid");
+    return false;
+  } else if (!userregx.test(firstname)) {
+    $("#firstname-err")
+      .text("Please enter only alphabets.")
+      .show();
+    $("#firstname").addClass("invalid");
+    return false;
+  } else {
+    $("#firstname-err").hide();
+    $("#firstname")
+      .removeClass("invalid")
+      .addClass("valid");
+    return true;
   }
+}
 
-  function validateEmail() {
-    const email = $("#email").val();
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!email || !emailPattern.test(email)) {
-      $("#email-err")
-        .text("Invalid email format.")
-        .show();
-      $("#email").addClass("invalid");
-      return false;
-    } else {
-      $("#email-err").hide();
-      $("#email")
-        .removeClass("invalid")
-        .addClass("valid");
-      return true;
-    }
-  }
+function validateLastName() {
+  var userregx = /^[a-zA-Z]+$/;
+  const lastname = $("#lastname").val();
 
-  function validatePassword() {
-    const password = $("#password").val();
-    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    if (!password || !passwordPattern.test(password)) {
-      $("#password-err")
-        .text(
-          "Password must be at least 8 characters long and contain letters and numbers."
-        )
-        .show();
-      $("#password").addClass("invalid");
-      return false;
-    } else {
-      $("#password-err").hide();
-      $("#password")
-        .removeClass("invalid")
-        .addClass("valid");
-      return true;
-    }
+  if (!lastname) {
+    $("#lastname-err")
+      .text("Last name is required.")
+      .show();
+    $("#lastname").addClass("invalid");
+    return false;
+  } else if (!userregx.test(lastname)) {
+    $("#lastname-err")
+      .text("Please enter only alphabets.")
+      .show();
+    $("#lastname").addClass("invalid");
+    return false;
+  } else {
+    $("#lastname-err").hide();
+    $("#lastname")
+      .removeClass("invalid")
+      .addClass("valid");
+    return true;
   }
+}
 
-  function validateConfirmPassword() {
-    const password = $("#password").val();
-    const confirmPassword = $("#confirm-password").val();
-    if (!confirmPassword || password !== confirmPassword) {
-      $("#confirm-password-err")
-        .text("Passwords do not match.")
-        .show();
-      $("#confirm-password").addClass("invalid");
-      return false;
-    } else {
-      $("#confirm-password-err").hide();
-      $("#confirm-password")
-        .removeClass("invalid")
-        .addClass("valid");
-      return true;
-    }
+function validateEmail() {
+  const email = $("#email").val();
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!email || !emailPattern.test(email)) {
+    $("#email-err")
+      .text("Invalid email format.")
+      .show();
+    $("#email").addClass("invalid");
+    return false;
+  } else {
+    $("#email-err").hide();
+    $("#email")
+      .removeClass("invalid")
+      .addClass("valid");
+    return true;
   }
+}
 
-  function validatePhone() {
-    const phone = $("#phone-number").val();
-    const phonePattern = /^\d{10}$/;
-    if (!phone || !phonePattern.test(phone)) {
-      $("#phone-err")
-        .text("Phone number must be 10 digits.")
-        .show();
-      $("#phone-number").addClass("invalid");
-      return false;
-    } else {
-      $("#phone-err").hide();
-      $("#phone-number")
-        .removeClass("invalid")
-        .addClass("valid");
-      return true;
-    }
+function validatePassword() {
+  const password = $("#password").val();
+  const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  if (!password || !passwordPattern.test(password)) {
+    $("#password-err")
+      .text(
+        "Password must be at least 8 characters long and contain letters and numbers."
+      )
+      .show();
+    $("#password").addClass("invalid");
+    return false;
+  } else {
+    $("#password-err").hide();
+    $("#password")
+      .removeClass("invalid")
+      .addClass("valid");
+    return true;
   }
+}
+
+function validateConfirmPassword() {
+  const password = $("#password").val();
+  const confirmPassword = $("#confirm-password").val();
+  if (!confirmPassword || password !== confirmPassword) {
+    $("#confirm-password-err")
+      .text("Passwords do not match.")
+      .show();
+    $("#confirm-password").addClass("invalid");
+    return false;
+  } else {
+    $("#confirm-password-err").hide();
+    $("#confirm-password")
+      .removeClass("invalid")
+      .addClass("valid");
+    return true;
+  }
+}
+
+function validatePhone() {
+  const phone = $("#phone-number").val();
+  const phonePattern = /^\d{10}$/;
+
+  if (!phone) {
+    $("#phone-err")
+      .text("Phone number is required.")
+      .show();
+    $("#phone-number").addClass("invalid");
+    return false;
+  } else if (!phonePattern.test(phone)) {
+    $("#phone-err")
+      .text("Phone number must be 10 digits and contain only numbers.")
+      .show();
+    $("#phone-number").addClass("invalid");
+    return false;
+  } else {
+    $("#phone-err").hide();
+    $("#phone-number")
+      .removeClass("invalid")
+      .addClass("valid");
+    return true;
+  }
+}
+
 
   function validateGender() {
     const gender = $("input[name='gender']:checked").val();
